@@ -52,7 +52,7 @@ void crystaliser( ArrayList pVectorList, float maxDistance, int maxConnections )
       Connection connection = connections.get(c);
      
 
-      stroke(0);
+      stroke(255);
       strokeWeight(1);
 
       line(connection.vector1.x, connection.vector1.y, connection.vector2.x, connection.vector2.y);
