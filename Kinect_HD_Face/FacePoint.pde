@@ -12,11 +12,19 @@ class FacePoint extends PVector  {
   }
   
   void wander(float speed) {
-    target.x = (noise(frameCount*speed+noiseOffsetX)-0.5)* width;
-    target.y = (noise(frameCount*speed+noiseOffsetY)-0.5) * height;
+    target.x = (noise(frameCount*speed+noiseOffsetX)-0.5)* width * 2;
+    target.y = (noise(frameCount*speed+noiseOffsetY)-0.5) * height * 2;
     
   }
   
+  void push(float px, float py, float minDistance, float gain) {
+    float distance = dist(this, new PVector(px,py));
+    if ( distance < minDistance) {
+      x -= (px-x) * gain;
+      y -= (py-y) * gain;
+    }
+    
+  }
   
   
 }

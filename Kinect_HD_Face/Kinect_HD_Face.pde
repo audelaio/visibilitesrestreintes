@@ -123,12 +123,15 @@ void draw() {
     for (int i = 0; i < KinectPV2.HDFaceVertexCount; i++) {
       FacePoint fp = facePoints.get(i);
       fp.moveTowardTarget(0.1);
+      fp.push(mouseX-width*0.5,mouseY-height*0.5,100,0.25);
       float x = fp.x; //HDfaceData.getX(i) - centerX;
       float y = fp.y; //HDfaceData.getY(i)- centerY;
       ellipse(x, y,3,3);
     }
     
-    delaunayser(facePoints,50);
+  
+    
+    delaunayser(facePoints,30);
    // endShape();
   }
 }
