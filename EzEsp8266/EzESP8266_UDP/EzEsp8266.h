@@ -33,7 +33,6 @@ public:
     
   }
 
-
   void startAccessPoint(const char* ssid, const char* password) {
     //setup(ssid,password);
     WiFi.softAP(ssid, password);
@@ -61,16 +60,31 @@ public:
   }
 
 
-  bool autoConnect(const char* fallback_ssid, const char* fallback_password) {
+  void autoConnect(const char* fallback_ssid, const char* fallback_password) {
     WiFiManager wifiManager;
-    return wifiManager.autoConnect(fallback_ssid,fallback_password);
+    wifiManager.setConfigPortalTimeout(180); // 3 min
+   
+    if(!wifiManager.autoConnect(fallback_ssid,fallback_password)) {
+    	Serial.println("Error failed to connect and hit timeout");
+    	delay(3000);    //reset and try again, or maybe put it to deep sleep
+    	ESP.reset();
+    	delay(5000);
+	} 
+
   }
 
   void autoConnect(const char* fallback_ssid, const char* fallback_password, IPAddress ip , IPAddress gateway, IPAddress subnet) {
     
     WiFiManager wifiManager;
     wifiManager.setSTAStaticIPConfig(ip, gateway, subnet);
-    wifiManager.autoConnect(fallback_ssid,fallback_password);
+    wifiManager.setConfigPortalTimeout(180); // 3 min
+     if(!wifiManager.autoConnect(fallback_ssid,fallback_password)) {
+    	Serial.println("Error failed to connect and hit timeout");
+    	delay(3000);    //reset and try again, or maybe put it to deep sleep
+    	ESP.reset();
+    	delay(5000);
+	} 
+
   }
 
 
