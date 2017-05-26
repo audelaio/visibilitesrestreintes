@@ -1,4 +1,4 @@
-# Lecture vidéo sans hoquet (et malheureusement sans son) avec un Raspberry PI 3
+# Lecture en boucle de la vidéo sans hoquet (et malheureusement sans son) avec un Raspberry PI 3
 
 * Installer [NOOBS](https://www.raspberrypi.org/downloads/noobs/) sur la carte SD
 * Insérer la carte SD dans le Raspberry PI 3
