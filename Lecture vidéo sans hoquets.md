@@ -3,8 +3,9 @@
 * Installer [NOOBS] (https://www.raspberrypi.org/downloads/noobs/) sur la carte SD
 * Insérer la carte SD dans le Raspberry PI 3
 * Installer Raspbian
-* Installer [Raspberry Pi Video Looper] (https://learn.adafruit.com/raspberry-pi-video-looper/installation)
+* Installer [Raspberry Pi Video Looper] (https://learn.adafruit.com/raspberry-pi-video-looper/installation) avec un terminal
 ```bash
+    cd
     sudo apt-get update
     sudo apt-get install -y git
     git clone https://github.com/adafruit/pi_video_looper.git
@@ -15,4 +16,8 @@
 * Désactiver le Raspberry Pi Video Looper (on va utiliser les outils installés par le script sans utiliser le Video Looper en tant que tel)
 ```bash
     sudo ./disable.sh
+```
+* Convertir la vidéo en **raw H.264 stream** avec [ffmpeg] (https://www.ffmpeg.org/)
+```bash
+    ffmpeg -i input_file.avi -vcodec copy -an -bsf:v h264_mp4toannexb output_file.h264
 ```
